@@ -1,16 +1,16 @@
 const Product = require('../models/Product');
-const Product = require('../models/Product');
 const Seller = require('../models/Seller');
+const { ObjectId } = require('mongodb');
 
 module.exports.add = async function(req,res){
     try{
-        let Product = await Product.create(req.body);
-        let seller = await Seller.findById(req.body.sellerId);
-        if(Product&&seller){
-            seller.products.push(Product);
+        let seller = await Seller.findById(req.body.seller);
+        if(seller){
+            let product = await Product.create(req.body);
+            seller.products.push(product);
             seller.save();
             return res.status(200).json({
-                data:Product,
+                data:product,
                 message:"Product Added Successfully"
             });
          }
@@ -30,11 +30,12 @@ module.exports.add = async function(req,res){
 
 module.exports.remove = async function(req,res){
     try{
-        let productId = req.params.id;
-        let sellerId = req.params.id;
-        await Product.findByIdAndDelete(productId);
-        let seller = await Seller.findByIdAndUpdate(sellerId,{$pull:{products:productId}});
+        let productId = req.body.id;
+        let sellerId = req.body.sellerId;
+        console.log(productId,sellerId);
+        let seller = await Seller.findByIdAndUpdate(ObjectId(sellerId),{$pull:{products:productId}});
         if(seller){
+            await Product.findByIdAndDelete(productId);
             return res.status(200).json({
                 message:"Product Removed Successfully."
             })
@@ -42,7 +43,7 @@ module.exports.remove = async function(req,res){
         else{
             return res.status(500).json({
                 message:"Something went wrong."
-            })
+            });
         }
     }
     catch(err){

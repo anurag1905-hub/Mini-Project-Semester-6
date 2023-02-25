@@ -1,15 +1,12 @@
 const Product = require('../models/Product');
 module.exports.search = async function(req,res){
     try{
-        let searchTerm = req.params.searchTerm;
+        let searchTerm = req.body.term;
         console.log(searchTerm);
-
-        let products = await Product.find({name:searchTerm})
+        let results = []
+        let products = await Product.find().or([{ name: searchTerm }, { category: searchTerm }])
         .populate({
-            path:'Seller',
-            options:{
-                sort:{rating},
-            }
+            path:'seller',
         });
 
         return res.status(200).json({

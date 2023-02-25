@@ -3,6 +3,6 @@ const router = express.Router();
 const productController = require('../controllers/productController');
 
 router.post('/add',productController.add);
-router.get('/remove/:id',productController.remove);
+router.post('/remove',productController.remove);
 
-module.express = router;
+module.exports = router;
