@@ -1,0 +1,15 @@
+{
+  "name": "mini-project-semester-6",
+  "version": "1.0.0",
+  "description": "A courier company website using ondc framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "ONDC"
+  ],
+  "author": "Anurag Harsh",
+  "license": "MIT"
+}
