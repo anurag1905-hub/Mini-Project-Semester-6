@@ -4,6 +4,7 @@ const subscriptionController = require('../controllers/subscriptionController');
 const searchController = require('../controllers/searchController');
 
 router.post('/subscribe',subscriptionController.subscribe);
+router.post('/unsubscribe',subscriptionController.unsubscribe);
 router.use('/product',require('./product'));
 router.post('/search',searchController.search);
 
