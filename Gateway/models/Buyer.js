@@ -35,6 +35,9 @@ const buyerSchema = new mongoose.Schema({
     },
     organization:{
         type:String
+    },
+    rating:{
+        type:Number
     }
 },{
     timestamps:true

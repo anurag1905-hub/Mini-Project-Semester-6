@@ -33,6 +33,9 @@ const sellerSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    rating:{
+        type:Number
+    },
     products:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Product'

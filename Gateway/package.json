@@ -4,8 +4,10 @@
   "description": "Gateway for simulating the ONDC framework",
   "main": "index.js",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
-    "mongoose": "^6.10.0"
+    "mongoose": "^6.10.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {},
   "scripts": {
