@@ -38,6 +38,26 @@ const buyerSchema = new mongoose.Schema({
     },
     rating:{
         type:Number
+    },
+    userType:{
+        type:String
+    },
+    signing_public_key:{
+        type:String
+    },
+    encryption_key:{
+        type:String
+    },
+    subscriber_id:{
+        type:String,
+        required:true
+    },
+    subscriber_url:{
+        type:String,
+        default:"http://localhost:8000"
+    },
+    unique_key_id:{
+        type:'Registry'
     }
 },{
     timestamps:true

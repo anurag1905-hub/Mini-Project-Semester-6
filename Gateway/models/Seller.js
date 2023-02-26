@@ -39,7 +39,27 @@ const sellerSchema = new mongoose.Schema({
     products:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Product'
-    }]
+    }],
+    userType:{
+        type:String
+    },
+    signing_public_key:{
+        type:String
+    },
+    encryption_key:{
+        type:String
+    },
+    subscriber_id:{
+        type:String,
+        required:true
+    },
+    subscriber_url:{
+        type:String,
+        default:"http://localhost:8000"
+    },
+    unique_key_id:{
+        type:'Registry'
+    }
 },{
     timestamps:true
 });
