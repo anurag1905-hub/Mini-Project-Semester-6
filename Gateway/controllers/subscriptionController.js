@@ -1,11 +1,13 @@
 const Product = require('../models/Product');
 const Seller = require('../models/Seller');
 const Buyer = require('../models/Buyer');
+const { generateKeyPair } = require('crypto');
 
 module.exports.subscribe = async function(req,res){
     try{
-        if(JSON.parse(req.body.isSeller)){
+        if(req.body.isSeller){
             let seller = await Seller.create(req.body);
+            seller.subscriber_url="http://localhost:8000";
             return res.status(200).json({
                 data:seller,
                 message:"Subscribed Successfully"

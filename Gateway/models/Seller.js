@@ -58,7 +58,8 @@ const sellerSchema = new mongoose.Schema({
         default:"http://localhost:8000"
     },
     unique_key_id:{
-        type:'Registry'
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Registry'
     }
 },{
     timestamps:true
